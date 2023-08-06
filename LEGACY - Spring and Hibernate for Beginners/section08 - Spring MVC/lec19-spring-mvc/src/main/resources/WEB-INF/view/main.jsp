@@ -5,7 +5,14 @@
     <title>Main page</title>
 </head>
 <body>
-    Hello World
+<h3>Learning Spring MVC</h3>
+<hr />
+<ol>
+    <li>
+        <a href="./show-form">Reading form data</a>
+    </li>
+</ol>
+
 
 </body>
 </html>

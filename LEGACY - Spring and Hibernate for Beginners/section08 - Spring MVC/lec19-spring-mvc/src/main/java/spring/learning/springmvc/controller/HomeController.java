@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
     // step 2: define controller method
     // step 3: add the request mapping to controller method
-    @RequestMapping(value = "/", method= RequestMethod.GET)
+    @RequestMapping(
+            value = "/",
+            method= RequestMethod.GET)
     public String displayMainPage() {
         return "main";
     }
