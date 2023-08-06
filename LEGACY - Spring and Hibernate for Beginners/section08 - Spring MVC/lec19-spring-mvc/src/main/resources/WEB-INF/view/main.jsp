@@ -11,6 +11,9 @@
     <li>
         <a href="./show-form">Reading form data</a>
     </li>
+    <li>
+        <a href="./show-form-model">Reading form data using model</a>
+    </li>
 </ol>
 
 
