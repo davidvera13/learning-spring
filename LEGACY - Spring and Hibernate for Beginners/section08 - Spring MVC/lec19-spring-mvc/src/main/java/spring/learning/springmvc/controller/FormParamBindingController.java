@@ -7,26 +7,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class FormModelController {
+public class FormParamBindingController {
     @RequestMapping(
-            value = "/show-form-model",
+            value = "/show-form-request-params",
             method= RequestMethod.GET)
     public String showForm() {
-        return "02forms-model/show-form";
+        return "03forms-request-params/show-form";
     }
 
     @RequestMapping(
-            value = "/handle-form-model",
+            value = "/handle-form-request-params",
             method= RequestMethod.GET)
-    public String handleForm(HttpServletRequest request, Model model) {
-        // read request parameter from html form
-        String name = request.getParameter("studentName");
+    public String handleForm(@RequestParam("studentName") String studentName, Model model) {
         // update value to uppercase and update response
-        String output = "Hi " + name.toUpperCase();
+        String output = "Ola amigo ! " + studentName.toUpperCase();
         model.addAttribute("output", output);
-        return "02forms-model/handle-form";
+        return "03forms-request-params/handle-form";
     }
 
 }

@@ -20,6 +20,9 @@
         <li>
             <a href="./show-form-model">Reading form data using model</a>
         </li>
+        <li>
+            <a href="./show-form-request-params">Reading form data using request param binding</a>
+        </li>
     </ol>
 </body>
 </html>

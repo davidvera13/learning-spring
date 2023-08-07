@@ -9,7 +9,7 @@
 <body>
     <img src="./resources/assets/img/img.png"  alt="logo" />
     <h3>Show form...</h3>
-    <form action="handle-form-model" method="GET">
+    <form action="handle-form-request-params" method="GET">
         <label for="studentName">Name: </label>
         <input type="text"
                name="studentName"
