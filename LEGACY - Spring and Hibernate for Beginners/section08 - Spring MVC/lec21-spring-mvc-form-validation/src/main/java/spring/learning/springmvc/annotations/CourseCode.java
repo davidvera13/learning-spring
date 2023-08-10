@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CourseCode {
     // define default value expected: can be different on class using annotation
-    String value() default "SPRING!";
+    String[] value() default "SPRING!";
     // define default error message
     String message() default "Must start with SPRING!";
     // define default group
