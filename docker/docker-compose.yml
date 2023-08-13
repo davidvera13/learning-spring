@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  # phpmyadmin: pour la gestion des bases de données: GUI d'affichage
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysqldb
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8000:80"
+    depends_on:
+      - "mysqldb"
+
+
+  # mysql: gestion des bases données
+  mysqldb:
+    image: mysql:8.0.28-oracle
+    container_name: mysqldb
+    command: ['mysqld','--character-set-server=utf8','--default-authentication-plugin=mysql_native_password']
+    volumes:
+      - ./data/dbstore:/var/lib/mysql
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: unless-stopped
