@@ -30,9 +30,9 @@ CREATE TABLE `instructors` (
     REFERENCES `instructor_details` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `course`;
+DROP TABLE IF EXISTS `courses`;
 
-CREATE TABLE `course` (
+CREATE TABLE `courses` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `title` varchar(128) DEFAULT NULL,
     `instructor_id` int(11) DEFAULT NULL,
@@ -44,7 +44,6 @@ CREATE TABLE `course` (
     REFERENCES `instructors` (`id`)
     ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
-
 
 
 SET FOREIGN_KEY_CHECKS = 1;

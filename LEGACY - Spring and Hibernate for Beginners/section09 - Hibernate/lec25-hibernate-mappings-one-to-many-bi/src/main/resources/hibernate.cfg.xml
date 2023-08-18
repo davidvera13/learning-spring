@@ -7,7 +7,7 @@
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">
-            jdbc:mysql://localhost:3309/hb-02-one-to-one-bi?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=TRUE
+            jdbc:mysql://localhost:3309/hb-03-one-to-many-bi?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=TRUE
         </property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
