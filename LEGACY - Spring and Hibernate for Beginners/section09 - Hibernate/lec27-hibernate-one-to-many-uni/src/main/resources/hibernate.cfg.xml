@@ -29,6 +29,8 @@
         <!-- Mapping files -->
         <mapping class="spring.learning.jdbc.hibernate.entity.Instructor" />
         <mapping class="spring.learning.jdbc.hibernate.entity.InstructorDetail" />
+        <mapping class="spring.learning.jdbc.hibernate.entity.Course" />
+        <mapping class="spring.learning.jdbc.hibernate.entity.Review" />
         <!--
         <mapping resource="student.hbm.xml"/>
         -->

@@ -6,6 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "courses")
 @ToString
@@ -32,7 +36,26 @@ public class Course {
     @ToString.Exclude
     private Instructor instructor;
 
+
+    @OneToMany(fetch= FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn(name = "course_id")
+    @ToString.Exclude
+    private Set<Review> reviews;
+
     public Course(String title) {
         this.title = title;
+    }
+
+    public Course(String title, Set<Review> reviews) {
+        this.title = title;
+        this.reviews = reviews;
+    }
+
+    // convenience methods
+    public void addReview(Review review) {
+        if (reviews == null) {
+            reviews = new HashSet<>();
+        }
+        reviews.add(review);
     }
 }
