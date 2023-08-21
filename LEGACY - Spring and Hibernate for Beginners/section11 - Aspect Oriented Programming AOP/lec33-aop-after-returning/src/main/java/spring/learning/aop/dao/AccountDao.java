@@ -3,6 +3,9 @@ package spring.learning.aop.dao;
 import org.springframework.stereotype.Component;
 import spring.learning.aop.domain.Account;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class AccountDao {
     private String name;
@@ -56,5 +59,14 @@ public class AccountDao {
     public void setServiceCode(String serviceCode) {
         System.out.println(getClass() + ": in setServiceCode()\n");
         this.serviceCode = serviceCode;
+    }
+    // add a new method: findAccounts
+    public List<Account> findAccounts() {
+        List<Account> accounts = new ArrayList<>();
+        accounts.add(new Account("john", "Silver"));
+        accounts.add(new Account("paul", "Gold"));
+        accounts.add(new Account("ringo", "Bronze"));
+        accounts.add(new Account("george", "Platinum"));
+        return accounts;
     }
 }

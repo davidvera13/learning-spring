@@ -45,7 +45,6 @@ public class MainApp {
         String serviceCode = accountDao.getServiceCode();
         System.out.println(name);
         System.out.println(serviceCode);
-
         // close context
         context.close();
     }
