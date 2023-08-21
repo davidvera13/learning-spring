@@ -1,9 +1,12 @@
 package spring.learning.aop.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import spring.learning.aop.domain.Account;
 
 @Aspect
 @Component
@@ -81,14 +84,33 @@ public class LoggingAspect {
     // #1 * : return type
     // #2 * : class name
     // #3 * : method name
-    // package level
-    //@Before("execution(* spring.learning.aop.dao.*.*(..))")
-    //public void beforeMethodInPackageCalledAdvice() {
-    //    System.out.println("=====>> Executing @Before advice on any DAO methods called(..)");
-    //}
     // will be called at the same time with beforeMethodInPackageCalledAdvice()
     @Before("spring.learning.aop.aspect.AopExpressions.forDaoPackage()")
     public void beforeMethodInPackageCalledAdviceWithPointcut() {
         System.out.println("=====>> ORDER 2 : Executing @Before advice on any DAO methods called(..) using pointcut");
+    }
+
+    // will be called at the same time with beforeMethodInPackageCalledAdvice()
+    // we pass jointPoint as parameter... it allows to retrieve parameters from method that is intercepted
+    @Before("spring.learning.aop.aspect.AopExpressions.forDaoPackage()")
+    public void beforeMethodInPackageCalledAdviceWithPointcut(JoinPoint joinPoint) {
+        System.out.println("=====>> ORDER 2 : Executing @Before advice on any DAO methods called(..) using pointcut");
+        // display the method signature
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        System.out.println("\tMethod signature: " + methodSignature);
+
+        // display the method arguments
+        Object[] args = joinPoint.getArgs();
+        System.out.println("\tMethod arguments: ");
+        System.out.println("\t   " + args.length);
+        for (Object arg: args) {
+            System.out.println("\targ : " + arg );
+            if (arg instanceof Account) {
+                // downcast and print specific fields
+                Account account = (Account) arg;
+                System.out.println("\t  - Account name:  " + account.getName());
+                System.out.println("\t  - Account level:  " + account.getLevel());
+            }
+        }
     }
 }

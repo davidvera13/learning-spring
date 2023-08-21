@@ -22,6 +22,8 @@ public class MainApp {
 
         // creating Account object
         Account account = new Account();
+        account.setName("Fox");
+        account.setLevel("Platinum");
         accountDao.addAccount(account);
 
         accountDao.addAccount(account, true);
