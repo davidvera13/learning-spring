@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,10 +38,27 @@ public class Course {
     private Instructor instructor;
 
 
-    @OneToMany(fetch= FetchType.LAZY, cascade=CascadeType.ALL)
+    @OneToMany(
+            fetch= FetchType.LAZY,
+            cascade=CascadeType.ALL)
     @JoinColumn(name = "course_id")
     @ToString.Exclude
     private Set<Review> reviews;
+
+    @ManyToMany(
+            cascade = {
+                    CascadeType.DETACH,
+                    CascadeType.MERGE,
+                    CascadeType.PERSIST,
+                    CascadeType.REFRESH
+            },
+            fetch = FetchType.LAZY)
+    @JoinTable(
+            name="course_student",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id") )
+    private Set<Student> students;
+
 
     public Course(String title) {
         this.title = title;
@@ -57,5 +75,16 @@ public class Course {
             reviews = new HashSet<>();
         }
         reviews.add(review);
+    }
+
+    public void addStudent(Student student) {
+        if(students == null)
+            students = new HashSet<>();
+        students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        students.remove(student);
+        student.getCourses().remove(this);
     }
 }
