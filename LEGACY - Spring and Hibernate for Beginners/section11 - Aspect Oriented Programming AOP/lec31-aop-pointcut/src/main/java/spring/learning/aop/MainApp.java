@@ -36,6 +36,14 @@ public class MainApp {
         membershipDao.updateMembership();
         membershipDao.doSomethingElse();
 
+        // calling dao getters and setters
+        accountDao.setName("WALT");
+        accountDao.setServiceCode("SILVER");
+        String name = accountDao.getName();
+        String serviceCode = accountDao.getServiceCode();
+        System.out.println(name);
+        System.out.println(serviceCode);
+
         // close context
         context.close();
     }
