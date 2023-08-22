@@ -69,4 +69,24 @@ public class AccountDao {
         accounts.add(new Account("george", "Platinum"));
         return accounts;
     }
+
+    public List<Account> findAccounts(boolean tripWire) {
+        // for academic purpose
+        List<Account> accounts = new ArrayList<>();
+
+        if (tripWire) {
+            throw new RuntimeException("You crash the app");
+        }
+
+        // create sample accounts
+        Account account1 = new Account("John", "Silver");
+        Account account2 = new Account("David", "Mithril");
+        Account account3 = new Account("Walter", "Gold");
+
+        // add to current list
+        accounts.add(account1);
+        accounts.add(account2);
+        accounts.add(account3);
+        return accounts;
+    }
 }
